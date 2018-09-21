@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" href="css/tab.css" />
+</head>
+<body>
+
+    <div id="tab">
+        <h3 class="up" id="two1" onmouseover="setContentTab('two',1,4)">热点新闻</h3>
+        <div class="block" id="con_two_1">
+            <ul>
+                <li><a class="tab_menu" href="#">[新闻热点]</a><a class="tab_title" href="#">点点妙：欢庆“十一”送祝福</a><span>2014-09-05</span></li>
+                <li><a class="tab_menu" href="#">[新闻热点]</a><a class="tab_title" href="#">点点妙携手移动端APP 开创棋牌游戏新模</a><span>2014-09-05</span></li>
+                <li><a class="tab_menu" href="#">[新闻热点]</a><a class="tab_title" href="#">看棋牌大亨如何颠覆快播江湖</a><span>2014-09-05</span></li>
+                <li><a class="tab_menu" href="#">[新闻热点]</a><a class="tab_title" href="#">棋牌行业：解密点点妙合作内幕 分成竟高达</a><span>2014-09-05</span></li>
+            </ul>
+        </div>
+        <h3 id="two2" onmouseover="setContentTab('two',2,4)">合作播报</h3>
+        <div id="con_two_2">
+            <ul>
+                <li><a class="tab_menu" href="#">[合作播报]</a><a class="tab_title" href="#">收银妹代理棋牌游戏 成功晋级游戏女老板2</a><span>2014-09-05</span></li>
+                <li><a class="tab_menu" href="#">[合作播报]</a><a class="tab_title" href="#">收银妹代理棋牌游戏 成功晋级游戏女老板1</a><span>2014-09-05</span></li>
+                <li><a class="tab_menu" href="#">[合作播报]</a><a class="tab_title" href="#">IT精英放弃高薪只因想“玩”游戏</a><span>2014-09-05</span></li>
+                <li><a class="tab_menu" href="#">[合作播报]</a><a class="tab_title" href="#">“干爹”扶持，乐猴棋牌开疆拓土</a><span>2014-09-05</span></li>
+            </ul>
+        </div>
+        <h3 id="two3" onmouseover="setContentTab('two',3,4)">行业咨询</h3>
+        <div id="con_two_3">
+            <ul>
+                <li><a class="tab_menu" href="#">[行业咨询]</a><a class="tab_title" href="#">收银妹代理棋牌游戏 成功晋级游戏女老板3</a><span>2014-09-05</span></li>
+                <li><a class="tab_menu" href="#">[行业咨询]</a><a class="tab_title" href="#">紫金阁：代理棋牌游戏如何能稳赚不亏？</a><span>2014-09-05</span></li>
+                <li><a class="tab_menu" href="#">[行业咨询]</a><a class="tab_title" href="#">你知道吗？“紫金阁”竟然升级做了“小三”</a><span>2014-09-05</span></li>
+                <li><a class="tab_menu" href="#">[行业咨询]</a><a class="tab_title" href="#">都市娱乐赚钱首选 棋牌游戏代理</a><span>2014-09-05</span></li>
+            </ul>
+        </div>
+        <h3 id="two4" onmouseover="setContentTab('two',4,4)">运营攻略</h3>
+        <div id="con_two_4">
+            <ul>
+                <li><a class="tab_menu" href="#">[运营攻略]</a><a class="tab_title" href="#">加盟网络棋牌游戏的注意事项</a><span>2014-09-05</span></li>
+                <li><a class="tab_menu" href="#">[运营攻略]</a><a class="tab_title" href="#">奇葩：一款可以自动赚钱的棋牌游戏</a><span>2014-09-05</span></li>
+                <li><a class="tab_menu" href="#">[运营攻略]</a><a class="tab_title" href="#">代理棋牌游戏 紫金阁支招稳赚不亏</a><span>2014-09-05</span></li>
+                <li><a class="tab_menu" href="#">[运营攻略]</a><a class="tab_title" href="#">棋牌行业内幕：什么时候代理棋牌游戏最合适</a><span>2014-09-05</span></li>
+            </ul>
+        </div>
+    </div>
+	
+<script type="text/javascript">
+function setContentTab(name, curr, n) {
+    for (i = 1; i <= n; i++) {
+        var menu = document.getElementById(name + i);
+        var cont = document.getElementById("con_" + name + "_" + i);
+        menu.className = i == curr ? "up" : "";
+        if (i == curr) {
+            cont.style.display = "block";
+        } else {
+            cont.style.display = "none";
+        }
+    }
+}
+</script>
+
+</body>
+</html>
