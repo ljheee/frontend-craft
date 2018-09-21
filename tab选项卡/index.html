@@ -11,7 +11,17 @@
         <h3 class="up" id="two1" onmouseover="setContentTab('two',1,4)">热点新闻</h3>
         <div class="block" id="con_two_1">
             <ul>
-                <li><a class="tab_menu" href="#">[新闻热点]</a><a class="tab_title" href="#">点点妙：欢庆“十一”送祝福</a><span>2014-09-05</span></li>
+                <li><a class="tab_menu" href="#">[更新盘点计划状态]</a>
+                    <br>
+                    <form name="form1">
+                        <input type="text" name="planCode" placeholder="计划code">
+                        <input type="number" name="planStatus" placeholder="计划status">
+                        <span><input type="reset" value="重置"></span>
+                        <span><input type="button" value="执行"
+                                     onclick="update(form1.planCode.value, form1.planStatus.value)"></span>
+                    </form>
+                 </li>
+
                 <li><a class="tab_menu" href="#">[新闻热点]</a><a class="tab_title" href="#">点点妙携手移动端APP 开创棋牌游戏新模</a><span>2014-09-05</span></li>
                 <li><a class="tab_menu" href="#">[新闻热点]</a><a class="tab_title" href="#">看棋牌大亨如何颠覆快播江湖</a><span>2014-09-05</span></li>
                 <li><a class="tab_menu" href="#">[新闻热点]</a><a class="tab_title" href="#">棋牌行业：解密点点妙合作内幕 分成竟高达</a><span>2014-09-05</span></li>
@@ -59,6 +69,23 @@ function setContentTab(name, curr, n) {
         }
     }
 }
+
+    // ajax请求方法
+
+    function update(planCode, planStatus) {
+
+        $.post('/inner/updateStatusByCode', {
+            planCode: planCode,
+            planStatus: planStatus
+        }, function (flag) {
+
+            if (flag > 0) {
+                alert("更新成功");
+            } else {
+                alert("更新失败");
+            }
+        });
+    }
 </script>
 
 </body>
