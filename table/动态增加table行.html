@@ -1,0 +1,95 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <title>动态增加table行</title>
+    <script type="text/javascript">
+
+        // 添加table一行， obj为后端获取的json对象
+        function addRow(tbodyID, obj) {
+            var bodyObj = document.getElementById(tbodyID);
+            if (bodyObj == null) {
+                alert("Body of Table not Exist!");
+                return;
+            }
+
+            var myObj = new Object();
+            myObj.id = "89890";
+            myObj.man = "Mustang";
+            myObj.step = 3;
+            myObj.status = 15;
+
+            
+            var rowCount = bodyObj.rows.length;
+            var newRow = bodyObj.insertRow(rowCount++);
+
+
+            var statusInput = bodyObj.rows[1].cells[3];
+            console.log(statusInput);
+            statusInput.getElementsByTagName("input")[0].setAttribute("value", myObj.status);
+
+            newRow.insertCell(0).innerHTML = myObj.id;
+            newRow.insertCell(1).innerHTML = myObj.man;
+            newRow.insertCell(2).innerHTML = myObj.step;
+            newRow.insertCell(3).innerHTML = statusInput.innerHTML.replace("none", "");
+            newRow.insertCell(4).innerHTML = bodyObj.rows[1].cells[4].innerHTML.replace("none", "");
+        }
+
+        function removeRow(inputobj) {
+            if (inputobj == null) return;
+            var parentTD = inputobj.parentNode;
+            var parentTR = parentTD.parentNode;
+            var parentTBODY = parentTR.parentNode;
+            var tds = parentTR.getElementsByTagName('td');
+
+            var taskId = tds[0].innerHTML;
+            var newStatus = tds[3].getElementsByTagName("input")[0].getAttribute("value");
+            alert(taskId+"==="+newStatus);
+
+            parentTBODY.removeChild(parentTR);
+        }
+
+        function changeStatus(inputobj, newStatus) {
+            inputobj.setAttribute("value",newStatus);
+        }
+    </script>
+</head>
+<body>
+
+<table border="1" cellspacing="0" bordercolor="#d3d3d3" style="border-collapse:collapse;">
+    <tbody id="tbody1">
+    <!--第0行：table表头。第1行隐藏行，作为增加新行第模板，因为表格中的<input>不好创建-->
+    <tr>
+        <th>id</th>
+        <th>man</th>
+        <th>step</th>
+        <th>status</th>
+        <th>operate</th>
+    </tr>
+    <tr style="display:none">
+        <th>id</th>
+        <th>man</th>
+        <th>step</th>
+        <th>
+            <input style="display:none" type="number" value="0" onchange="changeStatus(this,this.value)"/>
+        </th>
+        <th>
+            <input style="display:none" type="button" value="Delete" onClick="removeRow(this)"/>
+        </th>
+    </tr>
+
+    </tbody>
+
+    <tr>
+        <td>
+            <input type="button" value="Add Row" onClick="addRow('tbody1', new Object())"/>
+        </td>
+        <td>
+            <input type="text" value="5"/>
+        </td>
+    </tr>
+</table>
+
+
+</body>
+</html>

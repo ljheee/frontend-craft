@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>原始demo Dynamic Table</title>
+<script type="text/javascript">
+function addRow(tbodyID)
+{
+	var bodyObj=document.getElementById(tbodyID);
+	if(bodyObj==null) 
+	{
+		alert("Body of Table not Exist!");
+		return;
+	}
+	var rowCount = bodyObj.rows.length;
+	var cellCount = bodyObj.rows[0].cells.length;
+	var newRow = bodyObj.insertRow(rowCount++);  
+	for(var i=0;i<cellCount;i++)
+	{
+		 var cellHTML = bodyObj.rows[0].cells[i].innerHTML;
+		 if(cellHTML.indexOf("none")>=0)
+		 {
+			 cellHTML = cellHTML.replace("none","");
+		 }
+		 newRow.insertCell(i).innerHTML=cellHTML;
+	}
+}
+function removeRow(inputobj)
+{
+	if(inputobj==null) return;
+	var parentTD = inputobj.parentNode;
+	var parentTR = parentTD.parentNode;
+	var parentTBODY = parentTR.parentNode;
+	parentTBODY.removeChild(parentTR);
+}
+</script>
+</head>
+<body>
+<table>
+ <tbody id="tbody1">
+   <tr>
+     <td>
+        <input type="text" size="40"/>
+     </td>
+     <td>
+        <input style="display:none" mce_style="display:none" type="button" value="Delete" onClick="removeRow(this)"/>
+     </td>
+   </tr>
+ </tbody>
+    <tr>
+     <td>
+        <input type="button" value="Add Row" onClick="addRow('tbody1')"/>
+     </td>
+     <td>
+        
+     </td>
+   </tr>
+</table>
+</body>
+</html>
